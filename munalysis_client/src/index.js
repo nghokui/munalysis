@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
-import reducers from './reducers';
-import { asyncArtist, asyncAlbum, asyncTrack } from './middleware/async';
+import AppHolder from './containers/appHolder';
 
-const mw = [asyncArtist, asyncAlbum, asyncTrack]
-const createStoreWithMiddleware = applyMiddleware(...mw)(createStore);
+import reducers from './reducers';
+
+// import * as amw from './middleware/async';
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
+  	<AppHolder />
   </Provider>
   , document.querySelector('.container'));

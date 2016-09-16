@@ -3,6 +3,12 @@ import * as acConstants from './constants';
 
 const ROOT_URL = 'https://api.spotify.com/v1/search';
 
+export const checkAuthenticationStatus = () => {
+	const url = '/api/auth/status/';
+	const request = axios.get(url);
+	
+}
+
 export const fetchByArtist = (inArtist) => {
 	console.log("Artist query", inArtist);
 	const url = `${ROOT_URL}?q=${inArtist.replace(" ", '%20')}&type=artist`;
